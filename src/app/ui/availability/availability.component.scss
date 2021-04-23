@@ -1,0 +1,55 @@
+:root {
+    --text-color: #757575;
+}
+
+a {
+    text-decoration: underline;
+    color: #ffa726;
+}
+
+// * {
+//     border: 1px solid red;
+// }
+#main-container {
+    padding: 20px 10px;
+    background-color: #f5f5f5;
+    color: #757575;
+    height: 100%;
+    box-sizing: content-box;
+}
+
+p {
+    color: #757575;
+}
+
+.mat-card {
+    margin-bottom: 1px;
+}
+
+.num-input {
+    width: 65px;
+}
+
+#container-inputs-add {
+    display: flex;
+    justify-content: space-between;
+}
+
+#item {
+    width: 300px;
+    margin-right: 50px;
+}
+
+#actionAddItem {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+}
+
+.container-dupla {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 10px;
+}

@@ -121,8 +121,16 @@
               "devServerTarget": "angular-test:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
-  "defaultProject": "angular-test"
+    }
+  },
+  "defaultProject": "angular-test",
+  "cli": {
+    "analytics": "1cc865ae-15b0-4661-9f31-052f0345449b"
+  }
 }

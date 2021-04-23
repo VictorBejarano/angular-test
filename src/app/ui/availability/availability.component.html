@@ -1,0 +1,78 @@
+<div id="main-container">
+    <h3>Subir Disponibilidad (Manual)</h3>
+    <mat-card>
+        <form [formGroup]="exporterDataForm" (ngSubmit)="exporterSubmit()">
+            <mat-form-field>
+                <mat-label>Exportador</mat-label>
+                <input formControlName="name_exporter" matInput>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Fecha desde:</mat-label>
+                <input formControlName="date_from" matInput [matDatepicker]="pickerDateSince">
+                <mat-datepicker-toggle matSuffix [for]="pickerDateSince"></mat-datepicker-toggle>
+                <mat-datepicker #pickerDateSince></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>Fecha hasta:</mat-label>
+                <input formControlName="date_to" matInput [matDatepicker]="pickerDateTo">
+                <mat-datepicker-toggle matSuffix [for]="pickerDateTo"></mat-datepicker-toggle>
+                <mat-datepicker #pickerDateTo></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button color="primary" type="submit">Guardar</button>
+        </form>
+    </mat-card>
+    <mat-card>
+        <p>Añadir articulo</p>
+        <form [formGroup]="exporterDataForm" (ngSubmit)="exporterSubmit()">
+            <div id="container-inputs-add">
+                <mat-form-field id="item">
+                    <mat-label>Articulo</mat-label>
+                    <input formControlName="name_exporter" autocomplete matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>Cajas</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>T x Caja</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>T x Promo</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>FOB</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>Tallos</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>Importe</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+                <mat-form-field class="num-input">
+                    <mat-label>Ref</mat-label>
+                    <input formControlName="name_exporter" matInput>
+                </mat-form-field>
+            </div>
+
+            <div id="actionAddItem">
+                <div class="container-dupla">
+                    <a href="" color="primary">Definir composici&oacute;n de caja mixta</a>
+                    <a href="" color="primary">Observaciones</a>
+                </div>
+                <div class="container-dupla">
+                    <button mat-raised-button color="primary" type="submit">Guardar</button>
+                    <button mat-button color="primary">Borrar</button>
+                </div>
+            </div>
+
+        </form>
+    </mat-card>
+    <mat-card>
+        <p>Articulos añadidos</p>
+    </mat-card>
+</div>
