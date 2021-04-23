@@ -23,39 +23,51 @@
     </mat-card>
     <mat-card>
         <p>Añadir articulo</p>
-        <form [formGroup]="exporterDataForm" (ngSubmit)="exporterSubmit()">
+        <form [formGroup]="itemDataForm" (ngSubmit)="addItemSubmit()">
             <div id="container-inputs-add">
                 <mat-form-field id="item">
                     <mat-label>Articulo</mat-label>
-                    <input formControlName="name_exporter" autocomplete matInput>
+                    <input formControlName="name" autocomplete matInput>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>Cajas</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="num_box" type="number" matInput>
+                </mat-form-field>
+                <!-- <mat-form-field class="num-input">
+                    <mat-label>Cajas</mat-label>
+                    <input formControlName="type_box" matInput>
+                </mat-form-field> -->
+                <mat-form-field class="num-input">
+                    <mat-label>Tipo de caja</mat-label>
+                    <mat-select formControlName="type_box">
+                        <mat-option *ngFor="let type of keys(typeBox)" [value]="typeBox[type]">
+                            {{typeBox[type]}}
+                        </mat-option>
+                    </mat-select>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>T x Caja</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="t_box" type="number" matInput>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>T x Promo</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="t_pomo" type="number" matInput>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>FOB</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="fob" type="number" matInput>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>Tallos</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="stems" type="number" matInput>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>Importe</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="amount" type="number" matInput>
                 </mat-form-field>
                 <mat-form-field class="num-input">
                     <mat-label>Ref</mat-label>
-                    <input formControlName="name_exporter" matInput>
+                    <input formControlName="ref" matInput>
                 </mat-form-field>
             </div>
 
@@ -65,7 +77,7 @@
                     <a href="" color="primary">Observaciones</a>
                 </div>
                 <div class="container-dupla">
-                    <button mat-raised-button color="primary" type="submit">Guardar</button>
+                    <button mat-raised-button color="primary" type="submit" [disabled]="!itemDataForm.valid">Guardar</button>
                     <button mat-button color="primary">Borrar</button>
                 </div>
             </div>
@@ -74,5 +86,58 @@
     </mat-card>
     <mat-card>
         <p>Articulos añadidos</p>
+        <table mat-table [dataSource]="(items$ | async).items" class="items-table mat-elevation-z8">
+
+            <!--- Note that these columns can be defined in any order.
+                  The actual rendered columns are set as a property on the row definition" -->
+
+            <!-- Position Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef class="name-item-table"> Articulo </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            </ng-container>
+            <ng-container matColumnDef="num_box">
+                <th mat-header-cell *matHeaderCellDef> Cajas </th>
+                <td mat-cell *matCellDef="let element"> {{element.num_box}} </td>
+            </ng-container>
+            <ng-container matColumnDef="type_box">
+                <th mat-header-cell *matHeaderCellDef> Tipo de cajas </th>
+                <td mat-cell *matCellDef="let element"> {{element.type_box}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="t_box">
+                <th mat-header-cell *matHeaderCellDef> T x Caja </th>
+                <td mat-cell *matCellDef="let element"> {{element.t_box}} </td>
+            </ng-container>
+            <ng-container matColumnDef="t_pomo">
+                <th mat-header-cell *matHeaderCellDef> T x Pomo </th>
+                <td mat-cell *matCellDef="let element"> {{element.t_pomo}} </td>
+            </ng-container>
+            <ng-container matColumnDef="fob">
+                <th mat-header-cell *matHeaderCellDef> FOB </th>
+                <td mat-cell *matCellDef="let element"> {{element.fob}} </td>
+            </ng-container>
+            <ng-container matColumnDef="stems">
+                <th mat-header-cell *matHeaderCellDef> Tallos </th>
+                <td mat-cell *matCellDef="let element"> {{element.stems}} </td>
+            </ng-container>
+            <ng-container matColumnDef="amount">
+                <th mat-header-cell *matHeaderCellDef> Importe </th>
+                <td mat-cell *matCellDef="let element"> {{element.amount}} </td>
+            </ng-container>
+            <ng-container matColumnDef="ref">
+                <th mat-header-cell *matHeaderCellDef> Ref </th>
+                <td mat-cell *matCellDef="let element"> {{element.ref}} </td>
+            </ng-container>
+            <ng-container matColumnDef="button">
+                <th mat-header-cell *matHeaderCellDef class="del-button-table"></th>
+                <td mat-cell *matCellDef="let i = index">
+                    <button mat-button color="primary" (click)="deleteItem(i)">Borrar</button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns; let i = index;"></tr>
+        </table>
     </mat-card>
 </div>

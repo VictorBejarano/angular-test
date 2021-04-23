@@ -15,7 +15,17 @@ const reducer = createReducer(
   on(itemsPageActions.addItem, (state, { item }) => ({
     ...state,
     items: [...state.items, item],
-  }))
+  })),
+  on(itemsPageActions.deleteItem, (state, { index }) => {
+    const itemsTemp = [...state.items];
+    if (index > -1) {
+      itemsTemp.splice(index, 1);
+    }
+    return {
+      ...state,
+      items: [...itemsTemp],
+    };
+  })
 );
 
 export function itemsReducer(state: ItemsState, action: Action) {

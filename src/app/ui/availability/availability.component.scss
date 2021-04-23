@@ -27,7 +27,7 @@ p {
 }
 
 .num-input {
-    width: 65px;
+    width: 70px;
 }
 
 #container-inputs-add {
@@ -52,4 +52,16 @@ p {
     display: grid;
     grid-template-columns: repeat(2, auto);
     column-gap: 10px;
+}
+
+.items-table {
+    width: 100%;
+}
+
+.name-item-table {
+    width: 400px;
+}
+
+.del-button-table {
+    width: 50px;
 }
