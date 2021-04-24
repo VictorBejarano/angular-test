@@ -82,3 +82,8 @@ p {
 button[mat-raised-button] {
     color: white !important;
 }
+
+.mat-header-cell {
+    vertical-align: text-top;
+    padding-top: 6px;
+}
