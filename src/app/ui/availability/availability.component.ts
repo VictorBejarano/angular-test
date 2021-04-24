@@ -52,6 +52,7 @@ export class AvailabilityComponent implements OnInit {
   ];
   exporterDataForm: FormGroup;
   itemDataForm: FormGroupTyped<Item>;
+
   constructor(private store: Store<AppState>) {
     this.items$ = this.store.select('items').pipe(takeUntil(this.unsubcribe$));
     this.exporterDataForm = new FormGroup({
@@ -77,7 +78,6 @@ export class AvailabilityComponent implements OnInit {
   exporterSubmit(): void {}
 
   addItemSubmit(): void {
-    console.log(this.itemDataForm.value);
     this.store.dispatch(addItem({ item: this.itemDataForm.value }));
   }
 
@@ -85,5 +85,3 @@ export class AvailabilityComponent implements OnInit {
     this.store.dispatch(deleteItem({ index: i }));
   }
 }
-
-

@@ -30,6 +30,19 @@ p {
     width: 70px;
 }
 
+#container-inputs-data-exporter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+}
+
+#date-container {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    column-gap: 50px;
+}
+
 #container-inputs-add {
     display: flex;
     justify-content: space-between;
@@ -64,4 +77,8 @@ p {
 
 .del-button-table {
     width: 50px;
+}
+
+button[mat-raised-button] {
+    color: white !important;
 }
