@@ -75,10 +75,13 @@ export class AvailabilityComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  exporterSubmit(): void {}
+  exporterSubmit(): void {
+    this.exporterDataForm.reset();
+  }
 
   addItemSubmit(): void {
     this.store.dispatch(addItem({ item: this.itemDataForm.value }));
+    this.itemDataForm.reset();
   }
 
   deleteItem(i: number) {

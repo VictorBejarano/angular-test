@@ -78,7 +78,7 @@
                 </div>
                 <div class="container-dupla">
                     <button mat-raised-button color="primary" type="submit" [disabled]="!itemDataForm.valid">Guardar</button>
-                    <button mat-button color="primary">Borrar</button>
+                    <button mat-button color="primary" type="button" (click)="itemDataForm.reset()">Borrar</button>
                 </div>
             </div>
 
